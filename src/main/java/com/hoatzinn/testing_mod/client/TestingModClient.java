@@ -11,9 +11,11 @@ import net.minecraft.text.TranslatableText;*/
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientTickEvents;
 import net.fabricmc.fabric.api.client.keybinding.v1.KeyBindingHelper;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.option.KeyBinding;
 import org.lwjgl.glfw.GLFW;
 import net.minecraft.text.Text;
+import net.minecraft.server.MinecraftServer;
 
 
 
@@ -34,9 +36,13 @@ public class TestingModClient implements ClientModInitializer {
                 double x = client.player.getX();
                 double y = client.player.getY();
                 double z = client.player.getZ();
+                String message = "x:" + Math.round(x) + ", y:" + Math.round(y) + ", z:" + Math.round(z);
 
                 // Send location in chat
-                client.player.sendMessage(Text.literal("Your coordinates: X=" + x + ", Y=" + y + ", Z=" + z), false);
+                //client.player.sendMessage(Text.literal(message));
+                assert MinecraftClient.getInstance().player != null;
+                MinecraftClient.getInstance().player.networkHandler.sendChatMessage(message);
+
             }
         });
     }
