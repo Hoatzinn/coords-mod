@@ -1,0 +1,27 @@
+{
+  "schemaVersion": 1,
+  "id": "testing_mod",
+  "version": "1.0-SNAPSHOT",
+  "name": "Testing mod",
+  "description": "",
+  "authors": [],
+  "contact": {
+    "repo": "https://github.com/jelle/Testing mod"
+  },
+  "license": "All-Rights-Reserved",
+  "icon": "assets/testing_mod/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "client": [
+      "com.hoatzinn.testing_mod.client.TestingModClient"
+    ],
+    "main": [
+      "com.hoatzinn.testing_mod.TestingMod"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.14.22",
+    "fabric": "*",
+    "minecraft": "1.20.2"
+  }
+}
